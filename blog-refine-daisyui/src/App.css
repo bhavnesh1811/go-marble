@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  background-color: #F1F1F1;
 }
 
 @tailwind base;

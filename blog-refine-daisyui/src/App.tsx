@@ -9,12 +9,11 @@ import dataProvider from "@refinedev/simple-rest";
 import {
   BrowserRouter,
   Navigate,
-  Outlet,
   Route,
   Routes,
 } from "react-router-dom";
 import "./App.css";
-import { Layout } from "./components/layout";
+// import { Layout } from "./components/layout";
 import { HomeIcon} from "@heroicons/react/20/solid";
 import { Dashboard } from "./pages/dashboard";
 
@@ -23,7 +22,7 @@ function App() {
     <BrowserRouter>
       <RefineKbarProvider>
         <Refine
-          dataProvider={dataProvider("https://api.finefoods.refine.dev")}
+          dataProvider={dataProvider("https://dil-foods.onrender.com")}
           routerProvider={routerBindings}
           resources={[
             {
@@ -40,20 +39,12 @@ function App() {
           }}
         >
           <Routes>
-            <Route
-              element={
-                <Layout>
-                  <Outlet />
-                </Layout>
-              }
-            >
               <Route index element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard">
                 <Route index element={<Dashboard />} />
               </Route>
              
               <Route path="*" element={<ErrorComponent />} />
-            </Route>
           </Routes>
           <RefineKbar />
           <UnsavedChangesNotifier />

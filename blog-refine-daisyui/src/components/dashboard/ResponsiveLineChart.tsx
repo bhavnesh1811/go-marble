@@ -1,35 +1,37 @@
 import React from "react";
 import {
   ResponsiveContainer,
-  AreaChart,
+  LineChart,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  Area,
+  Line,
 } from "recharts";
-import { ChartTooltip } from "../../components/dashboard/ChartTooltip";
+import { ChartTooltip } from "./ChartTooltip";
 import { IChartDatum } from "../../interfaces";
 
-type TResponsiveAreaChartProps = {
+type TResponsiveLineChartProps = {
   kpi: string;
   data: IChartDatum[];
+  secondData: IChartDatum[];
   colors: {
     stroke: string;
     fill: string;
   };
 };
 
-export const ResponsiveAreaChart = ({
+export const ResponsiveLineChart = ({
   kpi,
   data,
+  secondData,
   colors,
-}: TResponsiveAreaChartProps) => {
+}: TResponsiveLineChartProps) => {
   return (
-    <ResponsiveContainer height={400}>
-      <AreaChart
+    <ResponsiveContainer height={350}>
+      <LineChart
         data={data}
-        height={400}
+        height={350}
         margin={{
           top: 10,
           right: 30,
@@ -37,7 +39,7 @@ export const ResponsiveAreaChart = ({
           bottom: 0,
         }}
       >
-        <CartesianGrid strokeDasharray="0 0 0" />
+        <CartesianGrid strokeDasharray="0 0 0" vertical={false} />
         <XAxis
           dataKey="date"
           tickCount={data?.length ?? 0}
@@ -48,7 +50,7 @@ export const ResponsiveAreaChart = ({
           }}
         />
         <YAxis
-          tickCount={13}
+          tickCount={6}
           tick={{
             stroke: "light-grey",
             strokeWidth: 0.5,
@@ -65,18 +67,24 @@ export const ResponsiveAreaChart = ({
             borderRadius: "10px",
           }}
         />
-        <Area
+        <Line
           type="monotone"
           dataKey="value"
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}
-          dot={{
-            stroke: colors?.stroke,
-            strokeWidth: 3,
-          }}
+          strokeDasharray="2 2"
         />
-      </AreaChart>
+        <Line
+          type="monotone"
+          dataKey="value1"
+          stroke={colors?.stroke}
+          strokeWidth={3}
+          fill={colors?.fill}
+        />
+       
+      </LineChart>
+   
     </ResponsiveContainer>
   );
 };
