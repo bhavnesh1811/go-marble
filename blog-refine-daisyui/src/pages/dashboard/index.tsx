@@ -7,7 +7,6 @@ import { IChartDatum, TTab } from "../../interfaces";
 
 export const Dashboard: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>("1-6");
-  const [selectedSecond, setSelectedSecond] = useState<string>("7-12");
 
   const filters: CrudFilter[] = [
     {
@@ -21,28 +20,11 @@ export const Dashboard: React.FC = () => {
       value: selectedDate?.split("-")[1],
     },
   ];
-  const secondaryFilters: CrudFilter[] = [
-    {
-      field: "id",
-      operator: "gte",
-      value: selectedSecond?.split("-")[0],
-    },
-    {
-      field: "id",
-      operator: "lte",
-      value: selectedSecond?.split("-")[1],
-    },
-  ];
+
   const { data: monthlyData } = useList<IChartDatum>({
     resource: "dummyData",
     filters,
   });
-  const { data: secondaryData } = useList<IChartDatum>({
-    resource: "dummyData",
-    filters:secondaryFilters,
-  });
-
-  console.log(filters);
 
   const useMemoizedChartData = (d: any) => {
     return useMemo(() => {
@@ -52,6 +34,7 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
         value: item?.onlineStoreSessions,
       }));
     }, [d]);
@@ -64,6 +47,7 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
         value: item?.netReturnValue,
       }));
     }, [d]);
@@ -76,6 +60,7 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
         value: item?.totalOrders,
       }));
     }, [d]);
@@ -88,6 +73,7 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
         value: item?.conversionRate,
       }));
     }, [d]);
@@ -100,6 +86,7 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
         value1: item?.onlineStoreSessions,
       }));
     }, [d]);
@@ -112,6 +99,7 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
         value1: item?.netReturnValue,
       }));
     }, [d]);
@@ -136,21 +124,21 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        month:item.month,
+       
         value1: item?.conversionRate,
       }));
     }, [d]);
   };
+
+
+  
 
   const memoizedOnlineStoreData = useMemoizedChartData(monthlyData);
   const memoizedNetReturnValue = useMemoizedNetReturnValue(monthlyData);
   const memoizedMonthlyOrdersData = useMemoizedMonthlyOrders(monthlyData);
   const memoizedMonthlyConversionData =
     useMemoizedMonthlyConversionData(monthlyData);
-  const memoizedOnlineStoreData1 = useMemoizedChartData1(secondaryData);
-  const memoizedNetReturnValue1 = useMemoizedNetReturnValue1(secondaryData);
-  const memoizedMonthlyOrdersData1 = useMemoizedMonthlyOrders1(secondaryData);
-  const memoizedMonthlyConversionData1 =
-    useMemoizedMonthlyConversionData1(secondaryData);
 
   const tabs: TTab[] = [
     {
@@ -160,7 +148,6 @@ export const Dashboard: React.FC = () => {
         <ResponsiveLineChart
           kpi="Monthly Online Store Sessions"
           data={memoizedOnlineStoreData}
-          secondData={memoizedOnlineStoreData1}
           colors={{
             stroke: "rgb(54, 162, 235)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -190,7 +177,7 @@ export const Dashboard: React.FC = () => {
         <ResponsiveLineChart
           kpi="Monthly Orders"
           data={memoizedMonthlyOrdersData}
-          secondData={memoizedMonthlyOrdersData1}
+          
           colors={{
             stroke: "rgb(54, 162, 235)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -205,7 +192,7 @@ export const Dashboard: React.FC = () => {
         <ResponsiveLineChart
           kpi="Monthly Conversion"
           data={memoizedMonthlyConversionData}
-          secondData={memoizedMonthlyConversionData1}
+          
           colors={{
             stroke: "rgb(54, 162, 235)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -222,8 +209,6 @@ export const Dashboard: React.FC = () => {
         tabs={tabs}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
-        selectedSecond={selectedSecond}
-        setSelectedSecond={setSelectedSecond}
       />
     </div>
   );

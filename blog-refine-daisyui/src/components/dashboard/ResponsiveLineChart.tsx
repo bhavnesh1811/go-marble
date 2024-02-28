@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   Line,
+  Legend,
 } from "recharts";
 import { ChartTooltip } from "./ChartTooltip";
 import { IChartDatum } from "../../interfaces";
@@ -14,7 +15,6 @@ import { IChartDatum } from "../../interfaces";
 type TResponsiveLineChartProps = {
   kpi: string;
   data: IChartDatum[];
-  secondData: IChartDatum[];
   colors: {
     stroke: string;
     fill: string;
@@ -24,9 +24,10 @@ type TResponsiveLineChartProps = {
 export const ResponsiveLineChart = ({
   kpi,
   data,
-  secondData,
   colors,
 }: TResponsiveLineChartProps) => {
+
+
   return (
     <ResponsiveContainer height={350}>
       <LineChart
@@ -42,12 +43,7 @@ export const ResponsiveLineChart = ({
         <CartesianGrid strokeDasharray="0 0 0" vertical={false} />
         <XAxis
           dataKey="date"
-          tickCount={data?.length ?? 0}
-          tick={{
-            stroke: "light-grey",
-            strokeWidth: 0.5,
-            fontSize: "12px",
-          }}
+          
         />
         <YAxis
           tickCount={6}
@@ -58,7 +54,11 @@ export const ResponsiveLineChart = ({
           }}
           interval="preserveStartEnd"
           domain={[0, "dataMax + 10"]}
+          dataKey="value"
+        
         />
+       {/* <Legend/> */}
+
         <Tooltip
           content={<ChartTooltip kpi={kpi} colors={colors} />}
           wrapperStyle={{
@@ -73,18 +73,20 @@ export const ResponsiveLineChart = ({
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}
-          strokeDasharray="2 2"
+
         />
+{/* 
         <Line
           type="monotone"
           dataKey="value1"
+          strokeDasharray="5"
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}
-        />
-       
+          
+          
+        /> */}
       </LineChart>
-   
     </ResponsiveContainer>
   );
 };

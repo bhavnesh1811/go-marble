@@ -32,6 +32,7 @@ export interface IChartDatum {
   netReturnValue:string;
   totalOrders:string;
   conversionRate:string
+  month:string;
 }
 
 export interface IChart {
