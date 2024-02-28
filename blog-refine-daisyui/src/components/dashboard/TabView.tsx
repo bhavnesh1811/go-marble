@@ -3,7 +3,7 @@ import { TabPanel } from "./TabPanel";
 import { IChartDatum, TTab } from "../../interfaces";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaPencil } from "react-icons/fa6";
-import { Skeleton } from "@chakra-ui/react";
+import { Skeleton,Divider } from "@chakra-ui/react";
 type TTabViewProps = {
   monthlyData: any;
   tabs: TTab[];
@@ -31,7 +31,7 @@ export const TabView = ({
       ),
       secondValue: monthlyData?.data?.reduce(
         (total: number, item: IChartDatum) =>
-          total + Number(item.onlineStoreSessions),
+          total + Number(item.onlineStoreSessions1),
         0
       ),
     },
@@ -47,7 +47,7 @@ export const TabView = ({
       secondValue: monthlyData?.data
         ?.reduce(
           (total: number, item: IChartDatum) =>
-            total + Number(item.netReturnValue),
+            total + Number(item.netReturnValue1),
           0
         )
         .toFixed(2),
@@ -64,7 +64,7 @@ export const TabView = ({
       secondValue: monthlyData?.data
         ?.reduce(
           (total: number, item: IChartDatum) =>
-            total + Number(item.totalOrders),
+            total + Number(item.totalOrders1),
           0
         )
         .toFixed(2),
@@ -81,7 +81,7 @@ export const TabView = ({
       secondValue: monthlyData?.data
         ?.reduce(
           (total: number, item: IChartDatum) =>
-            total + Number(item.conversionRate),
+            total + Number(item.conversionRate1),
           0
         )
         .toFixed(2),
@@ -95,13 +95,13 @@ export const TabView = ({
   }, [data]);
 
   const handleTabClick = (index: number) => {
-    setActiveTab(index === activeTab ? 0 : index);
+    setActiveTab(index);
   };
   return (
     <div className="py-4 bg-[#FFFFFF] border rounded-lg shadow-lg">
 
 <div
-        className="flex justify-end items-center gap-8 mr-16 mb-4"
+        className="flex justify-end items-center gap-8 mr-16 mb-2"
         // style={{ display: clicked ? "none" : "flex" }}
       >
         <select
@@ -127,11 +127,12 @@ export const TabView = ({
               width: "80%",
             }}
           >
-            <Skeleton isLoaded={loading} width={"80%"}>
+            <Skeleton isLoaded={loading} width={"90%"}>
               <div className="flex items-center justify-between">
                 <p>{metric.title}</p>
                 <div>{activeTab === index && <FaPencil color="#787878" />}</div>
               </div>
+                <Divider variant="dashed" />
             </Skeleton>
             <Skeleton isLoaded={loading}>
               <div>

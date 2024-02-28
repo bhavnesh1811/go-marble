@@ -28,11 +28,15 @@ export interface IAddress {
 
 export interface IChartDatum {
   date: string;
-  onlineStoreSessions: string;
+  onlineStoreSessions: number;
   netReturnValue:string;
-  totalOrders:string;
+  totalOrders:number;
   conversionRate:string
-  month:string;
+  onlineStoreSessions1: number;
+  netReturnValue1:string;
+  totalOrders1:number;
+  conversionRate1:string
+  
 }
 
 export interface IChart {

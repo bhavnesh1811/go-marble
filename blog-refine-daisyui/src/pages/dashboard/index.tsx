@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { CrudFilter, useList } from "@refinedev/core";
 import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineChart";
-import { ResponsiveBarChart } from "../../components/dashboard/ResponsiveBarChart";
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
 
@@ -34,8 +33,8 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
-        month:item.month,
         value: item?.onlineStoreSessions,
+        value1: item?.onlineStoreSessions1,
       }));
     }, [d]);
   };
@@ -47,8 +46,8 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
-        month:item.month,
         value: item?.netReturnValue,
+        value1: item?.netReturnValue1,
       }));
     }, [d]);
   };
@@ -60,8 +59,8 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
-        month:item.month,
         value: item?.totalOrders,
+        value1: item?.totalOrders1,
       }));
     }, [d]);
   };
@@ -73,66 +72,11 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
-        month:item.month,
         value: item?.conversionRate,
+        value1: item?.conversionRate1,
       }));
     }, [d]);
   };
-  const useMemoizedChartData1 = (d: any) => {
-    return useMemo(() => {
-      return d?.data?.map((item: IChartDatum) => ({
-        date: new Intl.DateTimeFormat("en-US", {
-          month: "short",
-          year: "numeric",
-          day: "numeric",
-        }).format(new Date(item.date)),
-        month:item.month,
-        value1: item?.onlineStoreSessions,
-      }));
-    }, [d]);
-  };
-  const useMemoizedNetReturnValue1 = (d: any) => {
-    return useMemo(() => {
-      return d?.data?.map((item: IChartDatum) => ({
-        date: new Intl.DateTimeFormat("en-US", {
-          month: "short",
-          year: "numeric",
-          day: "numeric",
-        }).format(new Date(item.date)),
-        month:item.month,
-        value1: item?.netReturnValue,
-      }));
-    }, [d]);
-  };
-  const useMemoizedMonthlyOrders1 = (d: any) => {
-    return useMemo(() => {
-      return d?.data?.map((item: IChartDatum) => ({
-        date: new Intl.DateTimeFormat("en-US", {
-          month: "short",
-          year: "numeric",
-          day: "numeric",
-        }).format(new Date(item.date)),
-        value1: item?.totalOrders,
-      }));
-    }, [d]);
-  };
-  const useMemoizedMonthlyConversionData1 = (d: any) => {
-    return useMemo(() => {
-      return d?.data?.map((item: IChartDatum) => ({
-        date: new Intl.DateTimeFormat("en-US", {
-          month: "short",
-          year: "numeric",
-          day: "numeric",
-        }).format(new Date(item.date)),
-        month:item.month,
-       
-        value1: item?.conversionRate,
-      }));
-    }, [d]);
-  };
-
-
-  
 
   const memoizedOnlineStoreData = useMemoizedChartData(monthlyData);
   const memoizedNetReturnValue = useMemoizedNetReturnValue(monthlyData);
@@ -159,13 +103,12 @@ export const Dashboard: React.FC = () => {
       id: 2,
       label: "Monthly Return Value",
       content: (
-        <ResponsiveBarChart
+        <ResponsiveLineChart
           kpi="Monthly Return Value"
           data={memoizedNetReturnValue}
-          // secondData={memoizedNetReturnValue1}
           colors={{
-            stroke: "rgb(255, 159, 64)",
-            fill: "rgba(255, 159, 64, 0.7)",
+            stroke: "rgb(54, 162, 235)",
+            fill: "rgba(54, 162, 235, 0.2)",
           }}
         />
       ),
@@ -177,7 +120,6 @@ export const Dashboard: React.FC = () => {
         <ResponsiveLineChart
           kpi="Monthly Orders"
           data={memoizedMonthlyOrdersData}
-          
           colors={{
             stroke: "rgb(54, 162, 235)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -192,7 +134,6 @@ export const Dashboard: React.FC = () => {
         <ResponsiveLineChart
           kpi="Monthly Conversion"
           data={memoizedMonthlyConversionData}
-          
           colors={{
             stroke: "rgb(54, 162, 235)",
             fill: "rgba(54, 162, 235, 0.2)",
