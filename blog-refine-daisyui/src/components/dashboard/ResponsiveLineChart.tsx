@@ -27,10 +27,10 @@ export const ResponsiveLineChart = ({
   console.log(data);
   
   return (
-    <ResponsiveContainer height={400}>
+    <ResponsiveContainer height={350}>
       <LineChart
         data={data}
-        height={400}
+        height={350}
         margin={{
           top: 10,
           right: 30,

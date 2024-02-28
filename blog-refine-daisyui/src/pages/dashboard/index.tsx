@@ -144,7 +144,7 @@ export const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="p-8 min-h-screen">
+    <div className="p-8 min-h-screen bg-[#F1F1F1]">
       <TabView
         monthlyData={monthlyData}
         tabs={tabs}
