@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ResponsiveContainer,
   LineChart,
@@ -7,7 +6,6 @@ import {
   YAxis,
   Tooltip,
   Line,
-  Legend,
 } from "recharts";
 import { ChartTooltip } from "./ChartTooltip";
 import { IChartDatum } from "../../interfaces";
@@ -29,10 +27,10 @@ export const ResponsiveLineChart = ({
   console.log(data);
   
   return (
-    <ResponsiveContainer height={400}>
+    <ResponsiveContainer height={350}>
       <LineChart
         data={data}
-        height={400}
+        height={350}
         margin={{
           top: 10,
           right: 30,
@@ -43,7 +41,7 @@ export const ResponsiveLineChart = ({
         <CartesianGrid strokeDasharray="0 0 0" vertical={false} />
         <XAxis dataKey="date" />
         <YAxis
-          tickCount={6}
+          tickCount={4}
           tick={{
             stroke: "light-grey",
             strokeWidth: 0.5,
@@ -53,8 +51,6 @@ export const ResponsiveLineChart = ({
           domain={[0, "dataMax + 10"]}
           dataKey="value1"
         />
-       
-        {/* <Legend/> */}
 
         <Tooltip
           content={<ChartTooltip kpi={kpi} colors={colors} />}
