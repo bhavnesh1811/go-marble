@@ -72,7 +72,6 @@ export const ResponsiveLineChart = ({
           type="monotone"
           dataKey="value1"
           strokeDasharray="5 5"
-          label="Monthly Value"
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}
