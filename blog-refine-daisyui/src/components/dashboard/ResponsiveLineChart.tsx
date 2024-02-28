@@ -27,10 +27,10 @@ export const ResponsiveLineChart = ({
   console.log(data);
   
   return (
-    <ResponsiveContainer height={350}>
+    <ResponsiveContainer height={400}>
       <LineChart
         data={data}
-        height={350}
+        height={400}
         margin={{
           top: 10,
           right: 30,
@@ -72,6 +72,7 @@ export const ResponsiveLineChart = ({
           type="monotone"
           dataKey="value1"
           strokeDasharray="5 5"
+          label="Monthly Value"
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}

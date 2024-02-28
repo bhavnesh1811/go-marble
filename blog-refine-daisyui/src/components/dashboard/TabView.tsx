@@ -101,7 +101,7 @@ export const TabView = ({
     <div className="py-4 bg-[#FFFFFF] border rounded-lg shadow-lg">
 
 <div
-        className="flex justify-end items-center gap-8 mr-16 mb-2"
+        className="flex justify-end items-center gap-8 mr-16 mb-2 cursor-pointer hover:cursor-pointer"
         // style={{ display: clicked ? "none" : "flex" }}
       >
         <select
@@ -150,7 +150,7 @@ export const TabView = ({
           </div>
         ))}
         <div
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
           onClick={() => setIsClicked(!clicked)}
         >
           <IoIosArrowDown />

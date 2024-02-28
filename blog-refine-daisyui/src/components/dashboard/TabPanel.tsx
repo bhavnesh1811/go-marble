@@ -1,5 +1,3 @@
-import React from "react";
-
 type TTabPanelProps = {
   isActive: Boolean;
   children: JSX.Element;
