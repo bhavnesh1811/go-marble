@@ -3,7 +3,7 @@ import { TabPanel } from "./TabPanel";
 import { IChartDatum, TTab } from "../../interfaces";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaPencil } from "react-icons/fa6";
-import { Skeleton,Divider } from "@chakra-ui/react";
+import { Skeleton, Divider } from "@chakra-ui/react";
 type TTabViewProps = {
   monthlyData: any;
   tabs: TTab[];
@@ -99,10 +99,8 @@ export const TabView = ({
   };
   return (
     <div className="py-4 bg-[#FFFFFF] border rounded-lg shadow-lg">
-
-<div
+      <div
         className="flex justify-end items-center gap-8 mr-16 mb-2 cursor-pointer hover:cursor-pointer"
-        // style={{ display: clicked ? "none" : "flex" }}
       >
         <select
           value={selectedDate}
@@ -113,7 +111,6 @@ export const TabView = ({
           <option value="13-18">February 2023-July 2023</option>
           <option value="19-25">August 2023-January 2024</option>
         </select>
-        
       </div>
       <div className="flex px-8 gap-4 mb-4">
         {data?.map((metric, index) => (
@@ -132,7 +129,7 @@ export const TabView = ({
                 <p>{metric.title}</p>
                 <div>{activeTab === index && <FaPencil color="#787878" />}</div>
               </div>
-                <Divider variant="dashed" />
+              <Divider variant="dashed" />
             </Skeleton>
             <Skeleton isLoaded={loading}>
               <div>
@@ -168,7 +165,6 @@ export const TabView = ({
           ))}
         </div>
       </Skeleton>
-      
     </div>
   );
 };
