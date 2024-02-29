@@ -117,11 +117,11 @@ export const TabView = ({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:flex px-8 gap-4 mb-4">
         {data?.map((metric, index) => (
           <div
-            className="flex flex-col flex-1 p-4 rounded-lg gap-3 w-full lg:w-[80%]"
+            className="flex flex-col flex-1 p-4 rounded-lg gap-3 w-full lg:w-[80%] hover:bg-[#F1F1F1]"
             onClick={() => handleTabClick(index)}
             key={index}
             style={{
-              background: activeTab === index ? "#F1F1F1" : "white",
+              background: activeTab === index ? "#F1F1F1" : "",
               cursor: "pointer",
             }}
           >
