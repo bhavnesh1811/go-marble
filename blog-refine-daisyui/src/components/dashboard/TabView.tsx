@@ -103,7 +103,7 @@ export const TabView = ({
   };
   return (
     <div className="py-4 bg-[#FFFFFF] border rounded-lg shadow-lg">
-      <div className="flex justify-end items-center gap-8 mr-16 mb-2 cursor-pointer hover:cursor-pointer">
+      <div className="flex justify-end items-center gap-8 min-[320px]:mx-4 md:mr-16  mb-2 cursor-pointer hover:cursor-pointer">
         <select
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
