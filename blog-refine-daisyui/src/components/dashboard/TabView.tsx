@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { TabPanel } from "./TabPanel";
 import { IChartDatum, TTab } from "../../interfaces";
-import { IoIosArrowDown } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoMdArrowDropdown,
+  IoMdArrowDropup,
+} from "react-icons/io";
 import { FaPencil } from "react-icons/fa6";
 import { Skeleton, Divider } from "@chakra-ui/react";
 type TTabViewProps = {
@@ -99,9 +103,7 @@ export const TabView = ({
   };
   return (
     <div className="py-4 bg-[#FFFFFF] border rounded-lg shadow-lg">
-      <div
-        className="flex justify-end items-center gap-8 mr-16 mb-2 cursor-pointer hover:cursor-pointer"
-      >
+      <div className="flex justify-end items-center gap-8 mr-16 mb-2 cursor-pointer hover:cursor-pointer">
         <select
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
@@ -112,16 +114,15 @@ export const TabView = ({
           <option value="19-25">August 2023-January 2024</option>
         </select>
       </div>
-      <div className="flex px-8 gap-4 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:flex px-8 gap-4 mb-4">
         {data?.map((metric, index) => (
           <div
-            className="flex flex-col flex-1 p-4 rounded-lg gap-3"
+            className="flex flex-col flex-1 p-4 rounded-lg gap-3 w-full lg:w-[80%]"
             onClick={() => handleTabClick(index)}
             key={index}
             style={{
               background: activeTab === index ? "#F1F1F1" : "white",
               cursor: "pointer",
-              width: "80%",
             }}
           >
             <Skeleton isLoaded={loading} width={"90%"}>
@@ -131,23 +132,41 @@ export const TabView = ({
               </div>
               <Divider variant="dashed" />
             </Skeleton>
-            <Skeleton isLoaded={loading}>
-              <div>
-                <span>{metric.value}</span>
-                <span style={{ marginLeft: "40px" }}>
-                  {(
-                    ((metric.secondValue - metric.value) /
-                      Math.abs(metric.value)) *
-                    100
-                  ).toFixed(2)}{" "}
-                  %
-                </span>
+            <Skeleton isLoaded={loading} h="28px">
+              <div className="flex items-center gap-6">
+                <div className="font-bold text-[20px]">
+                  {metric.title === "Net return value"
+                    ? `$${metric.value}`
+                    : metric.value?.toLocaleString()}
+                </div>
+                <div className="flex items-center gap-[2px]">
+                  <span>
+                    {Number(
+                      (metric.secondValue - metric.value) /
+                        Math.abs(metric.value)
+                    ) *
+                      100 >
+                    0 ? (
+                      <IoMdArrowDropup />
+                    ) : (
+                      <IoMdArrowDropdown />
+                    )}
+                  </span>
+                  <span>
+                    {(
+                      ((metric.secondValue - metric.value) /
+                        Math.abs(metric.value)) *
+                      100
+                    ).toFixed(2)}{" "}
+                    %
+                  </span>
+                </div>
               </div>
             </Skeleton>
           </div>
         ))}
         <div
-          className="flex items-center cursor-pointer"
+          className="flex items-center cursor-pointer md:col-span-2 min-[320px]:justify-center border-black border-2 border-solid"
           onClick={() => setIsClicked(!clicked)}
         >
           <IoIosArrowDown />

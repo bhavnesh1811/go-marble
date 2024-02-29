@@ -6,6 +6,7 @@ import {
   YAxis,
   Tooltip,
   Line,
+  Legend,
 } from "recharts";
 import { ChartTooltip } from "./ChartTooltip";
 import { IChartDatum } from "../../interfaces";
@@ -25,7 +26,7 @@ export const ResponsiveLineChart = ({
   colors,
 }: TResponsiveLineChartProps) => {
   console.log(data);
-  
+
   return (
     <ResponsiveContainer height={350}>
       <LineChart
@@ -53,13 +54,16 @@ export const ResponsiveLineChart = ({
         />
 
         <Tooltip
-          content={<ChartTooltip kpi={kpi} colors={colors} />}
+          content={<ChartTooltip kpi={kpi} colors={colors} label1={"value"} />}
           wrapperStyle={{
             backgroundColor: "rgba(0, 0, 0, 0.7)",
             border: "0 solid #000",
             borderRadius: "10px",
           }}
         />
+       
+
+        <Legend />
         <Line
           type="monotone"
           dataKey="value"
@@ -67,7 +71,6 @@ export const ResponsiveLineChart = ({
           strokeWidth={3}
           fill={colors?.fill}
         />
-
         <Line
           type="monotone"
           dataKey="value1"

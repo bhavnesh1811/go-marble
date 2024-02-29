@@ -1,4 +1,3 @@
-
 export const ChartTooltip = ({
   active,
   payload,
@@ -31,21 +30,39 @@ export const ChartTooltip = ({
             left: "-10px",
           }}
         />
-        <p className="flex text-xs font-semibold">{label}</p>
-        <p className="text-xs">
-          <span
-            className="mr-1"
-            style={{
-              width: "0.5px",
-              height: "0.5px",
-              border: `1px solid ${colors?.stroke}`,
-              backgroundColor: colors?.fill,
-            }}
-          >
-            &nbsp;&nbsp;&nbsp;&nbsp;
-          </span>
-          {`${kpi}: ${dataPoint.value}`}
-        </p>
+        <div className="flex flex-col gap-2">
+          <p className="flex text-xs font-semibold">{label}</p>
+          <p className="text-xs">
+            <span
+              className="mr-1"
+              style={{
+                width: "0.5px",
+                height: "0.5px",
+                border: `1px solid ${colors?.stroke}`,
+                backgroundColor: colors?.fill,
+              }}
+            >
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            {`${kpi}: ${dataPoint.value}`}
+          </p>
+        </div>
+        <div>
+          <p className="text-xs">
+            <span
+              className="mr-1"
+              style={{
+                width: "0.5px",
+                height: "0.5px",
+                border: `1px solid ${colors?.stroke}`,
+                backgroundColor: colors?.fill,
+              }}
+            >
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            {`${kpi}: ${dataPoint.value1}`}
+          </p>
+        </div>
       </div>
     );
   }
