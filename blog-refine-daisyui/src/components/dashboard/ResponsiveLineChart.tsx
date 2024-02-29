@@ -46,7 +46,7 @@ export const ResponsiveLineChart = ({
             strokeWidth: 0.5,
             fontSize: "12px",
           }}
-          dataKey="value"
+          dataKey="value1"
         />
 
         <Tooltip
