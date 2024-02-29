@@ -38,7 +38,7 @@ export const ResponsiveLineChart = ({
         }}
       >
         <CartesianGrid strokeDasharray="0 0 0" vertical={false} />
-        <XAxis dataKey="date1" />
+        <XAxis dataKey="date" />
         <YAxis
           tickCount={4}
           tick={{
@@ -46,9 +46,7 @@ export const ResponsiveLineChart = ({
             strokeWidth: 0.5,
             fontSize: "12px",
           }}
-          interval="preserveStartEnd"
-          domain={[0, "dataMax + 10"]}
-          dataKey="value1"
+          dataKey="value"
         />
 
         <Tooltip
