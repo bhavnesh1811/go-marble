@@ -3,7 +3,7 @@
 Welcome to Go-Marble project! This project is built to display the comparison of selected metrics. It is built using Refine Template,React, Recharts for data visualization, TailwindCSS and Chakra UI for styling.
 
 ## Deployed Link
-https://go-marble-nqeqvx4v5-bhavnesh1811.vercel.app/
+https://go-marble-iota.vercel.app/
 
 ## Screenshots
 
