@@ -166,7 +166,7 @@ export const TabView = ({
           </div>
         ))}
         <div
-          className="flex items-center cursor-pointer md:col-span-2 min-[320px]:justify-center border-black border-2 border-solid"
+          className="flex items-center cursor-pointer md:col-span-2 min-[320px]:justify-center"
           onClick={() => setIsClicked(!clicked)}
         >
           <IoIosArrowDown />
