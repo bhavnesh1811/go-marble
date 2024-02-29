@@ -6,7 +6,6 @@ import {
   YAxis,
   Tooltip,
   Line,
-  Legend,
 } from "recharts";
 import { ChartTooltip } from "./ChartTooltip";
 import { IChartDatum } from "../../interfaces";
@@ -61,9 +60,6 @@ export const ResponsiveLineChart = ({
             borderRadius: "10px",
           }}
         />
-       
-
-        <Legend />
         <Line
           type="monotone"
           dataKey="value"
