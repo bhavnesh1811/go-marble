@@ -14,6 +14,8 @@ export const ChartTooltip = ({
       top: coordinate.y, // Adjust positioning
     };
 
+    const label1=label.split(" ")[0]+" "+label.split(" ")[1]+" "+(Number(label.split(" ")[2])-1);
+
     return (
       <div
         className="p-1 flex flex-col justify-center items-start border border-black rounded-lg text-zinc-50"
@@ -30,8 +32,8 @@ export const ChartTooltip = ({
             left: "-10px",
           }}
         />
-        <div className="flex flex-col gap-2">
-          <p className="flex text-xs font-semibold">{label}</p>
+        <div className="flex flex-col gap-2 mb-2">
+          <p className="flex text-xs font-semibold">{label1}</p>
           <p className="text-xs">
             <span
               className="mr-1"
@@ -47,7 +49,8 @@ export const ChartTooltip = ({
             {`${kpi}: ${dataPoint.value}`}
           </p>
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
+        <p className="flex text-xs font-semibold">{label}</p>
           <p className="text-xs">
             <span
               className="mr-1"

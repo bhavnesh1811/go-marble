@@ -1,5 +1,6 @@
 export interface IChartDatum {
   date: string;
+  date1: string;
   onlineStoreSessions: number;
   netReturnValue:string;
   totalOrders:number;

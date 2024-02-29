@@ -108,10 +108,10 @@ export const TabView = ({
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
         >
-          <option value="1-6">February 2022-July 2022</option>
-          <option value="7-12"> August 2022-January 2023</option>
-          <option value="13-18">February 2023-July 2023</option>
-          <option value="19-25">August 2023-January 2024</option>
+          <option value="1-6">February 2021-July 2021</option>
+          <option value="7-12"> August 2021-January 2022</option>
+          <option value="13-18">February 2022-July 2022</option>
+          <option value="19-24">August 2022-January 2023</option>
         </select>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:flex px-8 gap-4 mb-4">

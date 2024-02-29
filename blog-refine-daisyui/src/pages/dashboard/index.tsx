@@ -33,6 +33,11 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        date1: new Intl.DateTimeFormat("en-US", {
+          month: "short",
+          year: "numeric",
+          day: "numeric",
+        }).format(new Date(item.date1)),
         value: item?.onlineStoreSessions,
         value1: item?.onlineStoreSessions1,
       }));
@@ -46,6 +51,11 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        date1: new Intl.DateTimeFormat("en-US", {
+          month: "short",
+          year: "numeric",
+          day: "numeric",
+        }).format(new Date(item.date1)),
         value: item?.netReturnValue,
         value1: item?.netReturnValue1,
       }));
@@ -59,6 +69,11 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        date1: new Intl.DateTimeFormat("en-US", {
+          month: "short",
+          year: "numeric",
+          day: "numeric",
+        }).format(new Date(item.date1)),
         value: item?.totalOrders,
         value1: item?.totalOrders1,
       }));
@@ -72,6 +87,11 @@ export const Dashboard: React.FC = () => {
           year: "numeric",
           day: "numeric",
         }).format(new Date(item.date)),
+        date1: new Intl.DateTimeFormat("en-US", {
+          month: "short",
+          year: "numeric",
+          day: "numeric",
+        }).format(new Date(item.date1)),
         value: item?.conversionRate,
         value1: item?.conversionRate1,
       }));

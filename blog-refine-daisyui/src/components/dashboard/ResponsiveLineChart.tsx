@@ -24,7 +24,6 @@ export const ResponsiveLineChart = ({
   data,
   colors,
 }: TResponsiveLineChartProps) => {
-  console.log(data);
 
   return (
     <ResponsiveContainer height={350}>
@@ -39,7 +38,7 @@ export const ResponsiveLineChart = ({
         }}
       >
         <CartesianGrid strokeDasharray="0 0 0" vertical={false} />
-        <XAxis dataKey="date" />
+        <XAxis dataKey="date1" />
         <YAxis
           tickCount={4}
           tick={{
@@ -53,7 +52,7 @@ export const ResponsiveLineChart = ({
         />
 
         <Tooltip
-          content={<ChartTooltip kpi={kpi} colors={colors} label1={"value"} />}
+          content={<ChartTooltip kpi={kpi} colors={colors} />}
           wrapperStyle={{
             backgroundColor: "rgba(0, 0, 0, 0.7)",
             border: "0 solid #000",
